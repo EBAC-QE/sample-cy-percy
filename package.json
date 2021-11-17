@@ -1,0 +1,26 @@
+{
+  "name": "sample-cy-percy",
+  "version": "1.0.0",
+  "description": "Exemplos de testes de regressão visual utilizando Percy",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --reporter mochawesome --reporter-options reportDir=\"cypress/results\",overwrite=false,html=false,json=true && npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json && npx marge mochawesome.json",
+    "test:allure": "npx cypress run --env allure=true",
+    "allure:open": "npx allure serve",
+    "sorry:cypress": "CYPRESS_API_URL=\"http://localhost:1234/\" npx cy2 run --record --key EBAC --parallel --ci-build-id `date +%s`",
+    "percy": "PERCY_TOKEN=ce228d5d3c06dc8e74dab3da6c6028ed81c2f69d7c795b32cbba577e5a806bf9 percy exec -- npx cypress run"
+  },
+  "author": "ernestosbarbosa",
+  "license": "ISC",
+  "dependencies": {
+    "@percy/cli": "^1.0.0-beta.70",
+    "@percy/cypress": "^3.1.1",
+    "@shelex/cypress-allure-plugin": "^2.19.5",
+    "allure-commandline": "^2.13.8",
+    "cy2": "^1.3.0",
+    "cypress": "^8.7.0",
+    "mochawesome": "^7.0.1",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^6.0.1"
+  }
+}
